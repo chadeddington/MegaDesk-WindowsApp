@@ -20,7 +20,7 @@ namespace MegaDesk_Eddington
             // Customer Info
             nameLabel.Text = quote.CustomerName;
             dateLabel.Text = quote.DateCreated.ToString("dd MMM yyyy");
-            shippingLabel.Text = quote.ShippingTime;
+            shippingLabel.Text = quote.ShippingTime.ToString();
 
             // Desk Info
             widthLabel.Text = desk.Width.ToString();

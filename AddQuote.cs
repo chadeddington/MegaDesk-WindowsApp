@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,8 +13,19 @@ using Newtonsoft.Json;
 
 namespace MegaDesk_Eddington
 {
+    // Shipping
+    public enum DeliveryType
+    {
+        three_day_shipping,
+        five_day_shipping,
+        seven_day_shipping,
+        fourteen_day_shipping
+    }
     public partial class AddQuote : Form
     {
+       
+        
+
         private Form _mainMenu;
         public AddQuote(Form mainMenu)
         {
@@ -24,13 +36,11 @@ namespace MegaDesk_Eddington
             var materials = Enum.GetValues(typeof(DesktopMaterial)).Cast<DesktopMaterial>().ToList();
             surfaceMaterialCmbo.DataSource = materials;
 
-            // Shipping
-            ShippingCmbo.Items.Add(3);
-            ShippingCmbo.Items.Add(5);
-            ShippingCmbo.Items.Add(7);
-            ShippingCmbo.Items.Add(14);
-            ShippingCmbo.SelectedItem = 14;
+            var delivery = Enum.GetValues(typeof(DeliveryType)).Cast<DeliveryType>().ToList();
+            ShippingCmbo.DataSource = delivery;
         }
+
+     
 
         private void AddQuoteToFile(DeskQuote quote)
         {
@@ -65,7 +75,7 @@ namespace MegaDesk_Eddington
             desk.NumOfDrawers = numOfDrawers.Value;
             desk.SurfaceType = (DesktopMaterial)surfaceMaterialCmbo.SelectedItem;
 
-            DeskQuote quote = new DeskQuote(desk, name, ShippingCmbo.GetItemText(ShippingCmbo.SelectedItem));
+            DeskQuote quote = new DeskQuote(desk, name, (DeliveryType)ShippingCmbo.SelectedItem);
             quote.QuotePrice = quote.CalculateAmount();
             try
             {

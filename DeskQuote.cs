@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Permissions;
@@ -10,17 +11,17 @@ namespace MegaDesk_Eddington
 {
     public class DeskQuote
     {
-        private int[,] _shippingPrices;
+        private int[,] _rushOrderPrices;
 
         public string CustomerName { get; set; }
         public Desk Desk { get; set; }
-        public string ShippingTime { get; set; }
+        public DeliveryType ShippingTime { get; set; }
         public DateTime DateCreated { get; }
         public decimal QuotePrice { get; set; }
 
 
 
-        public DeskQuote(Desk desk, string name, string shippingTime)
+        public DeskQuote(Desk desk, string name, DeliveryType shippingTime)
         {
             this.Desk = desk;
             this.CustomerName = name;
@@ -41,18 +42,55 @@ namespace MegaDesk_Eddington
 
             // ShippingCost
             decimal shippingCost = 0;
-            if (this.ShippingTime == "3")
-            {
-                shippingCost = (surfaceArea < 1000) ? 60 : (surfaceArea < 2000) ? 70 : 80;
-            }
-            else if (this.ShippingTime == "5")
-            {
-                shippingCost = (surfaceArea < 1000) ?40 : (surfaceArea < 2000) ? 50 : 60;
-            }
-            else if (this.ShippingTime == "7")
-            {
-                shippingCost = (surfaceArea < 1000) ? 30 : (surfaceArea < 2000) ? 35 : 40;
-            }
+            getRushOrder();
+            
+           switch (this.ShippingTime)
+           {
+                case DeliveryType.three_day_shipping:
+                    if (surfaceArea < 1000)
+                    {
+                        shippingCost = _rushOrderPrices[0, 0];
+                    }
+                    else if (surfaceArea <= 2000)
+                    {
+                        shippingCost = _rushOrderPrices[0, 1];
+                    }
+                    else
+                    {
+                        shippingCost = _rushOrderPrices[0, 2];
+                    }
+                    break;
+                case DeliveryType.five_day_shipping:
+                    if (surfaceArea < 1000)
+                    {
+                        shippingCost = _rushOrderPrices[1, 0];
+                    }
+                    else if (surfaceArea <= 2000)
+                    {
+                        shippingCost = _rushOrderPrices[1, 1];
+                    }
+                    else
+                    {
+                        shippingCost = _rushOrderPrices[1, 2];
+                    }
+                    break;
+                case DeliveryType.seven_day_shipping:
+                    if (surfaceArea < 1000)
+                    {
+                        shippingCost = _rushOrderPrices[2, 0];
+                    }
+                    else if (surfaceArea <= 2000)
+                    {
+                        shippingCost = _rushOrderPrices[2, 1];
+                    }
+                    else
+                    {
+                        shippingCost = _rushOrderPrices[2, 2];
+                    }
+                    break;
+           }
+            
+          
 
             // Drawers Cost
             decimal drawersCost = this.Desk.NumOfDrawers * 50;
@@ -82,9 +120,36 @@ namespace MegaDesk_Eddington
             return totalCost;
         }
 
-        private decimal GetRushOrder()
+        private void getRushOrder()
         {
-            return 0.00M;
+            _rushOrderPrices = new int[3, 3];
+
+            var pricesFile = @"rushOrderPrices.txt";
+
+            try
+            {
+                string[] prices = File.ReadAllLines(pricesFile);
+                int i = 0, j = 0;
+
+                foreach (string price in prices)
+                {
+                    _rushOrderPrices[i, j] = int.Parse(price);
+
+                    if (j == 2)
+                    {
+                        i++;
+                        j = 0;
+                    }
+                    else
+                    {
+                        j++;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

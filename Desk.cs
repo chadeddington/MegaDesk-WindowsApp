@@ -22,6 +22,7 @@ namespace MegaDesk_Eddington
         public DesktopMaterial SurfaceType { get; set; }
         public decimal NumOfDrawers { get; set; }
 
+
         public Desk()
         {
 

@@ -1,1 +1,1 @@
-[{"CustomerName":"Test","Desk":{"Width":24.0,"Depth":12.0,"SurfaceType":0,"NumOfDrawers":0.0},"ShippingTime":"14","DateCreated":"2020-05-19T00:00:00-06:00","QuotePrice":400.0}]
+[{"CustomerName":"Test","Desk":{"Width":24.0,"Depth":12.0,"SurfaceType":0,"NumOfDrawers":0.0},"ShippingTime":14,"DateCreated":"2020-05-19T00:00:00-07:00","QuotePrice":400.0},{"CustomerName":"colton","Desk":{"Width":24.0,"Depth":12.0,"SurfaceType":0,"NumOfDrawers":0.0},"ShippingTime":0,"DateCreated":"2020-05-19T00:00:00-07:00","QuotePrice":460.0}]
