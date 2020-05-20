@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace MegaDesk_Eddington
 {
@@ -19,7 +21,8 @@ namespace MegaDesk_Eddington
             _mainMenu = mainMenu;
 
             // SurfaceMaterial
-            surfaceMaterialCmbo.DataSource = Enum.GetValues(typeof(DesktopMaterial));
+            var materials = Enum.GetValues(typeof(DesktopMaterial)).Cast<DesktopMaterial>().ToList();
+            surfaceMaterialCmbo.DataSource = materials;
 
             // Shipping
             ShippingCmbo.Items.Add(3);
@@ -29,30 +32,50 @@ namespace MegaDesk_Eddington
             ShippingCmbo.SelectedItem = 14;
         }
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        private void AddQuoteToFile(DeskQuote quote)
         {
+            List<DeskQuote> deskQuotes = new List<DeskQuote>();
+            var quotesFile = "quotes.json";
+            
+            if (File.Exists(quotesFile))
+            {
+                using(StreamReader reader = new StreamReader(quotesFile))
+                {
+                    string quotes = reader.ReadToEnd();
 
+                    if(quotes.Length > 0)
+                    {
+                        deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
+                    }
+                }
+            }
+
+            deskQuotes.Add(quote);
+
+            var serializedQuotes = JsonConvert.SerializeObject(deskQuotes);
+            File.WriteAllText(quotesFile, serializedQuotes);
         }
 
         private void GenerateQuoteBtn_Click(object sender, EventArgs e)
         {
-            string name = "";
+            string name = NameInput.Text;
             Desk desk = new Desk();
+            desk.Width = deskWidth.Value;
+            desk.Depth = deskDepth.Value;
+            desk.NumOfDrawers = numOfDrawers.Value;
+            desk.SurfaceType = (DesktopMaterial)surfaceMaterialCmbo.SelectedItem;
+
+            DeskQuote quote = new DeskQuote(desk, name, ShippingCmbo.GetItemText(ShippingCmbo.SelectedItem));
+            quote.QuotePrice = quote.CalculateAmount();
             try
             {
-                desk.Width = deskWidth.Value;
-                desk.Depth = deskDepth.Value;
-                desk.NumOfDrawers = numOfDrawers.Value;
-                desk.SurfaceType = (DesktopMaterial) surfaceMaterialCmbo.SelectedItem;
-                name = NameInput.Text;
+                AddQuoteToFile(quote);
             }
             catch (Exception ex)
             {
                 // Handle Exception
             }
-
-            DeskQuote quote = new DeskQuote(desk, name, ShippingCmbo.GetItemText(ShippingCmbo.SelectedItem));
-
+            
             DisplayQuote display = new DisplayQuote(_mainMenu, desk, quote);
             display.Show();
             this.Hide();

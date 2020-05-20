@@ -10,10 +10,15 @@ namespace MegaDesk_Eddington
 {
     public class DeskQuote
     {
+        private int[,] _shippingPrices;
+
         public string CustomerName { get; set; }
         public Desk Desk { get; set; }
         public string ShippingTime { get; set; }
         public DateTime DateCreated { get; }
+        public decimal QuotePrice { get; set; }
+
+
 
         public DeskQuote(Desk desk, string name, string shippingTime)
         {
@@ -21,12 +26,13 @@ namespace MegaDesk_Eddington
             this.CustomerName = name;
             this.ShippingTime = shippingTime;
             this.DateCreated = DateTime.Today;
+
         }
         public decimal CalculateAmount()
         {
             decimal baseCost = 200;
             // Surface Area Cost
-            decimal surfaceArea = this.Desk.Width + this.Desk.Depth;
+            decimal surfaceArea = this.Desk.Width * this.Desk.Depth;
             decimal surfaceAreaCost = 0;
             if (surfaceArea > 1000)
             {
@@ -35,7 +41,6 @@ namespace MegaDesk_Eddington
 
             // ShippingCost
             decimal shippingCost = 0;
-
             if (this.ShippingTime == "3")
             {
                 shippingCost = (surfaceArea < 1000) ? 60 : (surfaceArea < 2000) ? 70 : 80;
@@ -75,6 +80,11 @@ namespace MegaDesk_Eddington
 
             decimal totalCost = baseCost + surfaceAreaCost + shippingCost + drawersCost + materialCost;
             return totalCost;
+        }
+
+        private decimal GetRushOrder()
+        {
+            return 0.00M;
         }
     }
 }

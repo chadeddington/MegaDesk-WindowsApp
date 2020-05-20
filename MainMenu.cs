@@ -29,5 +29,12 @@ namespace MegaDesk_Eddington
             newQuote.Show();
             this.Hide();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ViewAllQuotes viewAll = new ViewAllQuotes(this);
+            viewAll.Show();
+            this.Hide();
+        }
     }
 }

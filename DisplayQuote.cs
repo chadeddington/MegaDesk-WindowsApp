@@ -29,7 +29,7 @@ namespace MegaDesk_Eddington
             materialLabel.Text = desk.SurfaceType.ToString();
 
             // Quote Price
-            priceLabel.Text = "$" + quote.CalculateAmount().ToString();
+            priceLabel.Text = "$" + quote.QuotePrice.ToString();
 
         }
 
