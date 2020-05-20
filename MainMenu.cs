@@ -36,5 +36,12 @@ namespace MegaDesk_Eddington
             viewAll.Show();
             this.Hide();
         }
+
+        private void searchBtn_Click(object sender, EventArgs e)
+        {
+            SearchQuotes searchQuotes = new SearchQuotes(this);
+            searchQuotes.Show();
+            this.Hide();
+        }
     }
 }

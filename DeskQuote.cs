@@ -46,7 +46,7 @@ namespace MegaDesk_Eddington
             
            switch (this.ShippingTime)
            {
-                case DeliveryType.three_day_shipping:
+                case DeliveryType.three:
                     if (surfaceArea < 1000)
                     {
                         shippingCost = _rushOrderPrices[0, 0];
@@ -60,7 +60,7 @@ namespace MegaDesk_Eddington
                         shippingCost = _rushOrderPrices[0, 2];
                     }
                     break;
-                case DeliveryType.five_day_shipping:
+                case DeliveryType.five:
                     if (surfaceArea < 1000)
                     {
                         shippingCost = _rushOrderPrices[1, 0];
@@ -74,7 +74,7 @@ namespace MegaDesk_Eddington
                         shippingCost = _rushOrderPrices[1, 2];
                     }
                     break;
-                case DeliveryType.seven_day_shipping:
+                case DeliveryType.seven:
                     if (surfaceArea < 1000)
                     {
                         shippingCost = _rushOrderPrices[2, 0];

@@ -53,7 +53,7 @@
             this.NameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NameInput.Location = new System.Drawing.Point(208, 124);
             this.NameInput.Name = "NameInput";
-            this.NameInput.Size = new System.Drawing.Size(199, 26);
+            this.NameInput.Size = new System.Drawing.Size(199, 30);
             this.NameInput.TabIndex = 0;
             this.NameInput.TextChanged += new System.EventHandler(this.NameInput_TextChanged);
             // 
@@ -63,7 +63,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(35, 131);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 17);
+            this.label1.Size = new System.Drawing.Size(133, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Customer name:";
             // 
@@ -73,7 +73,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(35, 186);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 17);
+            this.label2.Size = new System.Drawing.Size(127, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Desk width (in):";
             // 
@@ -83,7 +83,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(35, 231);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 17);
+            this.label3.Size = new System.Drawing.Size(129, 20);
             this.label3.TabIndex = 5;
             this.label3.Text = "Desk depth (in):";
             // 
@@ -93,7 +93,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(35, 279);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(132, 17);
+            this.label4.Size = new System.Drawing.Size(157, 20);
             this.label4.TabIndex = 6;
             this.label4.Text = "Number of drawers:";
             // 
@@ -107,7 +107,7 @@
             0,
             0});
             this.numOfDrawers.Name = "numOfDrawers";
-            this.numOfDrawers.Size = new System.Drawing.Size(68, 26);
+            this.numOfDrawers.Size = new System.Drawing.Size(68, 30);
             this.numOfDrawers.TabIndex = 7;
             // 
             // surfaceMaterialCmbo
@@ -116,7 +116,7 @@
             this.surfaceMaterialCmbo.FormattingEnabled = true;
             this.surfaceMaterialCmbo.Location = new System.Drawing.Point(208, 367);
             this.surfaceMaterialCmbo.Name = "surfaceMaterialCmbo";
-            this.surfaceMaterialCmbo.Size = new System.Drawing.Size(199, 28);
+            this.surfaceMaterialCmbo.Size = new System.Drawing.Size(199, 33);
             this.surfaceMaterialCmbo.TabIndex = 8;
             // 
             // label5
@@ -125,7 +125,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(35, 367);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(115, 17);
+            this.label5.Size = new System.Drawing.Size(137, 20);
             this.label5.TabIndex = 9;
             this.label5.Text = "Surface Material:";
             // 
@@ -135,7 +135,7 @@
             this.ShippingCmbo.FormattingEnabled = true;
             this.ShippingCmbo.Location = new System.Drawing.Point(208, 318);
             this.ShippingCmbo.Name = "ShippingCmbo";
-            this.ShippingCmbo.Size = new System.Drawing.Size(199, 28);
+            this.ShippingCmbo.Size = new System.Drawing.Size(199, 33);
             this.ShippingCmbo.TabIndex = 10;
             // 
             // label6
@@ -144,7 +144,7 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(35, 325);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(103, 17);
+            this.label6.Size = new System.Drawing.Size(122, 20);
             this.label6.TabIndex = 11;
             this.label6.Text = "Shipping Days:";
             // 
@@ -175,7 +175,7 @@
             0,
             0});
             this.deskWidth.Name = "deskWidth";
-            this.deskWidth.Size = new System.Drawing.Size(68, 24);
+            this.deskWidth.Size = new System.Drawing.Size(68, 28);
             this.deskWidth.TabIndex = 13;
             this.deskWidth.Value = new decimal(new int[] {
             24,
@@ -198,7 +198,7 @@
             0,
             0});
             this.deskDepth.Name = "deskDepth";
-            this.deskDepth.Size = new System.Drawing.Size(68, 24);
+            this.deskDepth.Size = new System.Drawing.Size(68, 28);
             this.deskDepth.TabIndex = 14;
             this.deskDepth.Value = new decimal(new int[] {
             12,
@@ -210,9 +210,9 @@
             // 
             this.viewTitle.AutoSize = true;
             this.viewTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewTitle.Location = new System.Drawing.Point(296, 33);
+            this.viewTitle.Location = new System.Drawing.Point(275, 32);
             this.viewTitle.Name = "viewTitle";
-            this.viewTitle.Size = new System.Drawing.Size(174, 25);
+            this.viewTitle.Size = new System.Drawing.Size(217, 29);
             this.viewTitle.TabIndex = 16;
             this.viewTitle.Text = "New Desk Quote";
             // 

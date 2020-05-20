@@ -16,10 +16,10 @@ namespace MegaDesk_Eddington
     // Shipping
     public enum DeliveryType
     {
-        three_day_shipping,
-        five_day_shipping,
-        seven_day_shipping,
-        fourteen_day_shipping
+        fourteen,
+        three,
+        five,
+        seven
     }
     public partial class AddQuote : Form
     {
